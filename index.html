@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="card__header">
+            <img src="./img/X2oObC4.png" />
+        </div>
+        <!-- <h2>hello!</h2> -->
+        <div class="card__body">
+            <div class="filter-btn">
+                <a id="one" href="#"><i class="fa fa-check-circle"></i></a>
+                <a id="two" href="#" onclick="sortAtoZ()"><i class="fa fa-sort-alpha-down"></i></a>
+                <a id="three" href="#" onclick="sortZtoA()"><i class="fa fa-sort-alpha-up"></i></a>
+                <a id="all" href="#"><i class="fa fa-clock"></i></a>
+                <span class="toggle-btn">
+                    <i class="fa fa-filter"></i>
+                    <i class="fa fa-times"></i>
+                </span>
+            </div>
+            <div class="card__content">
+                <div class="card__title">
+                    <h2>My Tasks</h2>
+                    <p>September 9,2020</p>
+
+                </div>
+                <div class="card__add">
+                    <input id="newTask" type="text" placeholder="Enter an activity..."
+                    onkeypress="return runScript(event)()"
+                    >
+                    
+                    <button id="addItem" onclick="createNewTask()">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+                <span style="font-size: 13px;color:red ;font-style: italic;" 
+                id="spanError"
+                >
+                </span>
+                <div class="card__todo">
+                    <!-- Uncompleted tasks -->
+                    <ul class="todo" id="todo">
+                        <!-- <li>dsa 
+                            <div class="ml-auto">
+                                <i class="fa-regular fa-trash-can icon-trash icon"></i>
+                                <i class="fa-regular fa-circle-check icon-non-check icon"></i>
+                            </div>
+                        </li>
+                        <li>dsa</li> -->
+                    </ul>
+                    <!-- Completed tasks -->
+                    <ul class="todo" id="completed">
+                        <!-- <li>dsagit
+                            <div class="ml-auto">
+                                <i class="fa-regular fa-trash-can icon-trash icon"></i>
+                                <i class="fa-solid fa-circle-check icon-check icon"></i>
+                            </div>
+                        </li>
+                        <li>ds</li> -->
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function () {
+            $('.toggle-btn').click(function () {
+                $('.filter-btn').toggleClass('open');
+
+            });
+
+            $('.filter-btn a').click(function () {
+                $('.filter-btn').removeClass('open');
+
+            });
+
+        });
+    </script>
+
+    <script type="module" src="./js/index.js"></script>
+
+
+</body>
+
+</html>
