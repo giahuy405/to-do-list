@@ -16,7 +16,7 @@ window.createNewTask = () => {
     resetInput();
 };
 // press Enter run 'createNewTask'
-window.runScript = (e)  =>{
+window.runScript = (e) => {
     //See notes about 'which' and 'key'
     if (e.keyCode == 13) {
         createNewTask();
@@ -95,20 +95,56 @@ function resetInput() {
     document.querySelector('#newTask').focus();
 }
 window.deleteTask = (id) => {
-    let index = listUnchecked.findIndex((item) => item.id === id);
-    if (index == -1) return;
-    listUnchecked.splice(index, 1);
-    renderTask();
-    renderTaskChecked();
-    saveTask();
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        };
+        let index = listUnchecked.findIndex((item) => item.id === id);
+        if (index == -1) return;
+        listUnchecked.splice(index, 1);
+        renderTask();
+        renderTaskChecked();
+        saveTask();
+    })
+
 }
 window.deleteTaskChecked = (id) => {
-    let index = listChecked.findIndex((item) => item.id === id);
-    if (index == -1) return;
-    listChecked.splice(index, 1);
-    renderTask();
-    renderTaskChecked();
-    saveTask();
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        };
+        let index = listChecked.findIndex((item) => item.id === id);
+        if (index == -1) return;
+        listChecked.splice(index, 1);
+        renderTask();
+        renderTaskChecked();
+        saveTask();
+    })
+   
 }
 /**
  *  Kiểm tra nhập ô input
